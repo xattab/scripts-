@@ -5,5 +5,5 @@ for list in `cat /tmp/distlist.tmp`; do
 zmprov gdlm $list | grep memberCount > /tmp/$list
 done
 zmprov -l gaa domen.com | wc -l  > a.com 
-sed -i '1 i All mailbox in syneforge' /tmp/a.com
+sed -i '1 i All mailbox in domain' /tmp/a.com
 cat /tmp/*.com | mail -s "Members" "admin@domen.com" 
