@@ -69,7 +69,7 @@ ARCHIVEDIR=/nfs/backup/	# where to store final backups
 RSYNC_OPTS="-aHK --delete --exclude=*.pid" # leave these unless you are sure you need something else
 
 #--- ARCHIVE NAMES ---#
-BACKUPNAME="SyneforgeBackup"	# what you want your backups called
+BACKUPNAME="Backup"	# what you want your backups called
 FULL_PREFIX="FULL"	# prefix used for full backups
 DIFF_PREFIX="DIFF"	# prefix used for differential backups
 BACKUPDATE=`date +%Y%m%d`	# date format used in archive names
@@ -107,7 +107,7 @@ PASSDIR=/etc/`basename $0`/ # the directory the encryption hash is stored in.
 PASSFILE="noread"	# the file containing the password hash
 
 #--- Log Settings ---#
-EMAIL="xattab@syneforge.com"	# the address to send logs to
+EMAIL="xattab@"	# the address to send logs to
 # VJS - Added CC email to avoid errors sending report
 #EMAILCC=				# another address to send to, blank for none
 LOG="/var/log/zim_backup.log"	# log location
@@ -668,7 +668,7 @@ function do_backup {
 	#Starting 'service downtime' counter
 	DOWNTIMEA=(`date +%s`)
 	# Stopping Zimbra
-        (echo  "Subject:Stop zimbra service"; echo "Stopping the Zimbra server") | sendmail -F "Zimbra Backup" xattab@syneforge.com mh@proluna.net
+        (echo  "Subject:Stop zimbra service"; echo "Stopping the Zimbra server") | sendmail -F "Zimbra Backup" 
 	echo "Stopping the Zimbra server..." 
 	echo
 	su - $ZM_USER -c $ZM_HOME"bin/zmcontrol stop" 
@@ -726,7 +726,7 @@ function do_backup {
 	minutes=$(($RUNTIME  / 60))
 	seconds=$(($RUNTIME  % 60))
 	echo "Service down time was - Hr:$hours Min:$minutes Sec:$seconds"
-(echo  "Subject:Start zimbra service"; echo "Service down time was - Hr:$hours Min:$minutes Sec:$seconds") | sendmail -F "Zimbra Backup" xattab@syneforge.com mh@proluna.net
+(echo  "Subject:Start zimbra service"; echo "Service down time was - Hr:$hours Min:$minutes Sec:$seconds") | sendmail -F "Zimbra Backup" 
    # Do Hacks?
     if [ $STATHACK = "yes" ]
 	then

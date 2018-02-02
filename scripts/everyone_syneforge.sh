@@ -19,7 +19,7 @@ fi
 
 
 # --- Config section
-LISTNAME=everybody@syneforge.com
+LISTNAME=everybody
 #REMOVENAMES=( admin@domen.com
             #)
 # --- End config
